@@ -13,12 +13,11 @@ public class Checkboxes {
 
     //    Checkboxes - проверить, что первый чекбокс unchecked, отметить первый чекбокс, проверить что он checked.
     @Test
-    public void checkboxUnchecked() {
+    public void checkboxUncheckedTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
         driver.get("http://the-internet.herokuapp.com/checkboxes");
         WebElement checkbox = driver.findElement(By.xpath("//*[@type='checkbox'][1]"));
         Assert.assertFalse(checkbox.isSelected());
@@ -26,12 +25,11 @@ public class Checkboxes {
     }
 
     @Test
-    public void checkboxChecked() {
+    public void checkboxCheckedTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
         driver.get("http://the-internet.herokuapp.com/checkboxes");
         WebElement checkbox = driver.findElement(By.xpath("//*[@type='checkbox'][1]"));
         checkbox.click();

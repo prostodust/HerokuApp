@@ -14,55 +14,52 @@ public class AddAndRemoveElements {
 
     //    Add/Remove Elements - добавить 2 элемента, удалить элемент, проверить количество элементов
     @Test
-    public void addElement() {
+    public void addElementTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
-
-        WebElement addElementButton = driver.findElement(By.xpath("//button[text()='Add Element']"));
+        WebElement buttonAddElement = driver.findElement(By.xpath("//button[text()='Add Element']"));
         for (int i = 1; i < 3; i++) {
-            addElementButton.click();
-            WebElement deleteButton = driver.findElement(By.xpath("//*[@onclick='deleteElement()'][" + i + "]"));
-            boolean isDeleteButtonDisplayed = deleteButton.isDisplayed();
+            buttonAddElement.click();
+            WebElement buttonDelete = driver.findElement(By.xpath("//*[@onclick='deleteElement()'][" + i + "]"));
+            boolean isDeleteButtonDisplayed = buttonDelete.isDisplayed();
             Assert.assertTrue(isDeleteButtonDisplayed);
         }
         driver.quit();
     }
 
     @Test
-    public void removeElement() {
+    public void removeElementTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
-
         for (int i = 1; i < 10; i++) { //создаем тестовые данные
             driver.findElement(By.xpath("//button[text()='Add Element']")).click();
         }
-        int countElement = driver.findElements(By.xpath("//*[@onclick='deleteElement()']")).size();
+        int countOfDeleteButtons = driver.findElements(By.xpath("//*[@onclick='deleteElement()']")).size();
         driver.findElement(By.xpath("//*[@onclick='deleteElement()']")).click();
-        int countElementAfter = driver.findElements(By.xpath("//*[@onclick='deleteElement()']")).size();
-        Assert.assertTrue(countElementAfter < countElement);
+        int countOfDeleteButtonsAfterClick = driver.findElements(By.xpath("//*[@onclick='deleteElement()']")).size();
+        Assert.assertTrue(countOfDeleteButtonsAfterClick < countOfDeleteButtons);
         driver.quit();
     }
 
     @Test
-    public void numberOfElements() {
+    public void numberOfElementsTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
-
         int expectedQuantity = 5;
         for (int i = 0; i < expectedQuantity; i++) { //создаем тестовые данные
             driver.findElement(By.xpath("//button[text()='Add Element']")).click();
         }
-        List<WebElement> deleteButtons = driver.findElements(By.xpath("//*[@onclick='deleteElement()']"));
-        Assert.assertEquals(expectedQuantity, deleteButtons.size());
+        List<WebElement> buttonsDelete = driver.findElements(By.xpath("//*[@onclick='deleteElement()']"));
+        Assert.assertEquals(expectedQuantity, buttonsDelete.size());
         driver.quit();
     }
 }

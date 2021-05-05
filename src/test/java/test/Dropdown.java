@@ -15,12 +15,11 @@ public class Dropdown {
     //    Dropdown - Взять все элементы дроп-дауна и проверить их наличие. Выбрать первый, проверить, что он выбран,
     //    выбрать второй, проверить, что он выбран
     @Test
-    public void checkedElement() {
+    public void checkedElementTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
         driver.get("http://the-internet.herokuapp.com/dropdown");
         WebElement dropdown = driver.findElement(By.id("dropdown"));
         boolean isDropdownDisplayed = dropdown.isDisplayed();
@@ -29,12 +28,11 @@ public class Dropdown {
     }
 
     @Test
-    public void selectFirstElement() {
+    public void selectFirstElementTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
         driver.get("http://the-internet.herokuapp.com/dropdown");
         Select select = new Select(driver.findElement(By.id("dropdown")));
         select.selectByVisibleText("Option 1");
@@ -44,12 +42,11 @@ public class Dropdown {
     }
 
     @Test
-    public void selectSecondElement() {
+    public void selectSecondElementTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
         driver.get("http://the-internet.herokuapp.com/dropdown");
         Select select = new Select(driver.findElement(By.id("dropdown")));
         select.selectByVisibleText("Option 2");

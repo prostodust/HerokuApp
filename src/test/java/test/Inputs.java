@@ -14,12 +14,11 @@ public class Inputs {
 
 //    Inputs - Проверить на возможность ввести различные цифровые и нецифровые значения, используя Keys.ARROW_UP  И Keys.ARROW_DOWN
     @Test
-    public void enteringNumericValues() {
+    public void enteringNumericValuesTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
         driver.get("http://the-internet.herokuapp.com/inputs");
         WebElement inputField = driver.findElement(By.tagName("input"));
         inputField.sendKeys("456");
@@ -30,12 +29,11 @@ public class Inputs {
     }
 
     @Test
-    public void enteringNonDigitalValues() {
+    public void enteringNonDigitalValuesTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
         driver.get("http://the-internet.herokuapp.com/inputs");
         WebElement inputField = driver.findElement(By.tagName("input"));
         inputField.sendKeys("non digital");
