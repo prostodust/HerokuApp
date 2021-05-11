@@ -36,8 +36,8 @@ public class Dropdown {
         driver.get("http://the-internet.herokuapp.com/dropdown");
         Select select = new Select(driver.findElement(By.id("dropdown")));
         select.selectByVisibleText("Option 1");
-        String text = select.getFirstSelectedOption().getText();
-        Assert.assertEquals(text, "Option 1");
+        String firstSelectedOptionText = select.getFirstSelectedOption().getText();
+        Assert.assertEquals(firstSelectedOptionText, "Option 1");
         driver.quit();
     }
 
@@ -50,8 +50,8 @@ public class Dropdown {
         driver.get("http://the-internet.herokuapp.com/dropdown");
         Select select = new Select(driver.findElement(By.id("dropdown")));
         select.selectByVisibleText("Option 2");
-        String text = select.getFirstSelectedOption().getText();
-        Assert.assertEquals(text, "Option 2");
+        String secondSelectedOptionText = select.getFirstSelectedOption().getText();
+        Assert.assertEquals(secondSelectedOptionText, "Option 2");
         driver.quit();
     }
 }
