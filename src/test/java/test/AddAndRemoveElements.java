@@ -23,8 +23,8 @@ public class AddAndRemoveElements {
         WebElement buttonAddElement = driver.findElement(By.xpath("//button[text()='Add Element']"));
         for (int i = 1; i < 3; i++) {
             buttonAddElement.click();
-            WebElement buttonDelete = driver.findElement(By.xpath("//*[@onclick='deleteElement()'][" + i + "]"));
-            boolean isDeleteButtonDisplayed = buttonDelete.isDisplayed();
+            WebElement deleteButtons = driver.findElement(By.xpath("//*[@onclick='deleteElement()'][" + i + "]"));
+            boolean isDeleteButtonDisplayed = deleteButtons.isDisplayed();
             Assert.assertTrue(isDeleteButtonDisplayed);
         }
         driver.quit();
