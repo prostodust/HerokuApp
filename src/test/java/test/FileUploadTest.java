@@ -25,7 +25,7 @@ public class FileUploadTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get("http://the-internet.herokuapp.com/upload");
-        driver.findElement(By.xpath("//input[@type='file']")).sendKeys("C:\\Users\\Kom\\IdeaProjects\\HerokuApp\\src\\test\\resources\\testpage.html");
+        driver.findElement(By.xpath("//input[@type='file']")).sendKeys(System.getProperty("user.dir") + "/src/test/resources/testpage.html");
         driver.findElement(By.xpath("//*[@id='file-submit']")).click();
         WebElement webElement = driver.findElement(By.xpath("//*[@id='uploaded-files']"));
         WebDriverWait wait = new WebDriverWait(driver, 20);
